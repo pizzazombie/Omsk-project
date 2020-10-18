@@ -9,9 +9,5 @@ import java.util.List;
 
 public interface DeviceRepository  extends CrudRepository<Device, Integer> {
     Iterable<Device> findAllByProject_id(int projectId);
-
     Device getById(int id);
-
-    //    @Query("select b from Event b where b.device_id = :device_id")
-
 }

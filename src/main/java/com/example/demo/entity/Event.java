@@ -6,6 +6,7 @@ import lombok.Data;
 
 import javax.persistence.*;
 import java.sql.Date;
+import java.sql.Timestamp;
 
 @Data
 @Entity // This tells Hibernate to make a table out of this class
@@ -19,7 +20,7 @@ public class Event {
     private Integer device_id;
 
     @Column(name = "date")
-    private Date date;
+    private Timestamp date;
 
     @Column(name = "type")
     private String type;

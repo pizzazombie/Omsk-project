@@ -21,11 +21,12 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.ArrayList;
 import java.util.Collections;
+import java.util.HashMap;
 import java.util.List;
 
 @Controller // This means that this class is a Controller
 
-public class MainController {
+public class DeviceController {
     @Autowired
     private ProjectRepository projectRepository;
 
@@ -41,18 +42,6 @@ public class MainController {
     @Autowired
     private DeviceService deviceService;
 
-
-    @GetMapping(path="/putObjects")
-    public @ResponseBody String putProjects() {
-        // This returns a JSON or XML with the users
-
-
-        for(int i=1; i<3; i++)
-        {
-            deviceService.addDevice(new Device());
-        }
-            return "ok";
-    }
 
     @GetMapping(path="/getDevices", produces = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity<Object> getDevices(@RequestParam int id) {
@@ -102,41 +91,5 @@ public class MainController {
 
         return new ResponseEntity<>(jsonDevice.toMap(), HttpStatus.OK);
     }
-    @GetMapping(path="/getProjects", produces = MediaType.APPLICATION_JSON_VALUE)
-    public ResponseEntity<Object> getProjects() {
-//         This returns a JSON or XML with the users
-        Iterable<Project> projects;
-        try {
-            projects = projectRepository.findAll();
-        }catch (Exception e){
-            System.out.println("Error while loading projects");
-            e.printStackTrace();
-            return null;
-        }
-        JSONArray array = new JSONArray();
 
-
-        for (Project project : projects){
-            int id = project.getId();
-            String name = project.getName();
-            JSONObject JsonProject = new JSONObject();
-            JSONObject stats = new JSONObject();
-
-            List<Device> devices = (List<Device>) deviceService.getAllByProject_Id(id);
-            List<String> devNames = new ArrayList<>();
-            for(Device d : devices){
-                devNames.add(d.getSerial_number());
-            }
-            JsonProject.put("devices", devNames.toString());
-            stats.put("deviceCount", devices.size());
-
-            JsonProject.put("id", id);
-            JsonProject.put("projectName", name);
-            JsonProject.put("stats", stats);
-
-            array.put(JsonProject);
-        }
-
-        return new ResponseEntity<>(array.toList(), HttpStatus.OK);
-    }
 }
