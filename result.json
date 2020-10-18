@@ -1,7 +1,0 @@
-[
-  Device(id=1,
-  project=Project(id=1,
-  device=null,
-  name=SkyNet),
-  serial_number=comp-011023132)
-]

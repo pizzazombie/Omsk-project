@@ -38,10 +38,6 @@ public class DeviceServiceImpl implements DeviceService {
         deviceRepository.delete(deviceRepository.getById(id));
     }
 
-//    @Override
-//    public Iterable<Device> getAllByProject(Project project) {
-//        return deviceRepository.findAllByProject_id(project.getId());
-//    }
     @Override
     public Iterable<Device> getAllByProject_Id(int id) {
         return deviceRepository.findAllByProject_id(id);
@@ -57,6 +53,7 @@ public class DeviceServiceImpl implements DeviceService {
         return (List<Device>) deviceRepository.findAll();
     }
 
+    //count errors/warnings and events
     @Override
     public HashMap<String, Integer> findAllByEventTypeError(int device_id){
         Iterable<Event> events = eventService.getAllByDevice_id(device_id);
@@ -67,10 +64,9 @@ public class DeviceServiceImpl implements DeviceService {
         Timestamp date;
         for (Event e : events){
              date = e.getDate();
-             System.out.println(date.getTime());
              if (e.getType().equals("event"))
                  stable++;
-            if (System.currentTimeMillis() - date.getTime() < 3600 * 24)
+            if (System.currentTimeMillis() - date.getTime() < 3600 * 24)  //check for last 24 hours
                 if (e.getType().equals("error") || e.getType().equals("warning"))
                     errors++;
 

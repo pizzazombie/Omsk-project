@@ -9,7 +9,7 @@
         <relativePath/> <!-- lookup parent from repository -->
     </parent>
     <groupId>com.example</groupId>
-    <artifactId>demo</artifactId>
+    <artifactId>omsk</artifactId>
     <version>0.0.1-SNAPSHOT</version>
     <name>Omsk</name>
     <description>Omsk project for managing data</description>

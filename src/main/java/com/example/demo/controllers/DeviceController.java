@@ -24,7 +24,7 @@ import java.util.Collections;
 import java.util.HashMap;
 import java.util.List;
 
-@Controller // This means that this class is a Controller
+@Controller
 
 public class DeviceController {
     @Autowired
