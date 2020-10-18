@@ -10,4 +10,5 @@ public class OmskApplication {
         SpringApplication.run(OmskApplication.class, args);
     }
 
+
 }

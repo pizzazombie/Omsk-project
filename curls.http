@@ -1,1 +1,5 @@
-GET http://localhost:9000/getDevices?id=1
+GET http://localhost:9000/getDevices?id=2
+
+###
+
+GET http://localhost:9000/getProjects
