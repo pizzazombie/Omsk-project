@@ -8,7 +8,13 @@ Implement a web application with GET requests.
 
 ## Installation
 
-First configure database setting in `application.properties` file.
+First clone project and go to project folder
+
+```sh
+git clone https://github.com/pizzazombie/Omsk-project.git; cd Omsk-project;
+```
+ 
+Configure database setting in `application.properties` file.
 Then compile project by Maven:
 
 ```sh
